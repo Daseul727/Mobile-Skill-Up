@@ -11,8 +11,8 @@ import com.yuyakaido.android.cardstackview.Direction
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var cardStackAdapter: CardStackAdapter
-    lateinit var manager : CardStackLayoutManager
+    private lateinit var cardStackAdapter: CardStackAdapter
+    private lateinit var manager : CardStackLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +61,8 @@ class MainActivity : AppCompatActivity() {
         //이 부분이 CardStackAdapter 에서 들어오는 파라미터
         cardStackAdapter = CardStackAdapter(baseContext,testList)
         cardStackView.layoutManager = manager
+
+        //이거 붙이니까 에뮬 안켜져서 원인찾는중..
         cardStackView.adapter = cardStackAdapter
 
     }
