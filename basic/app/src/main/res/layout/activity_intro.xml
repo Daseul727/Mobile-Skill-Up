@@ -16,6 +16,7 @@
         tools:layout_editor_absoluteX="0dp"> <!-- vertical = 세로정렬-->
 
         <Button
+            android:id="@+id/joinBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/mainColor"
@@ -24,6 +25,7 @@
             android:text="Join" />
 
         <Button
+            android:id="@+id/loginBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/mainColor"
