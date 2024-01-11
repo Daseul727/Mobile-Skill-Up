@@ -5,19 +5,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.example.sogating.auth.IntroActivity
+import com.example.sogating.utils.FirebaseAuthUtils
 import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity : AppCompatActivity() {
 
     private val TAG = "SplashActivity"
 
-    private val auth = FirebaseAuth.getInstance()
+    //private val auth = FirebaseAuth.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
         //로그인 체크
-        val uid = auth.currentUser?.uid.toString()
+        //val uid = auth.currentUser?.uid.toString()
+        val uid = FirebaseAuthUtils.getUid()
 
         if(uid == "null") {
             Handler().postDelayed({
