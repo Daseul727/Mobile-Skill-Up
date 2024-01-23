@@ -11,6 +11,7 @@ import com.example.sogating.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 class JoinActivity : AppCompatActivity() {
@@ -18,6 +19,12 @@ class JoinActivity : AppCompatActivity() {
     private val TAG = "JoinActivity"
 
     private lateinit var auth: FirebaseAuth
+
+    private var nickname = ""
+    private var gender = ""
+    private var city = ""
+    private var age = ""
+    private var uid = ""
 
     /*
         참고 : https://firebase.google.com/docs/auth/android/start?hl=ko#kotlin+ktx
@@ -35,19 +42,32 @@ class JoinActivity : AppCompatActivity() {
             val email = findViewById<TextInputEditText>(R.id.emailArea)
             val password = findViewById<TextInputEditText>(R.id.passwordArea)
 
+            nickname = findViewById<TextInputEditText>(R.id.nicknameArea).text.toString()
+            gender = findViewById<TextInputEditText>(R.id.genderArea).text.toString()
+            city = findViewById<TextInputEditText>(R.id.cityArea).text.toString()
+            age = findViewById<TextInputEditText>(R.id.ageArea).text.toString()
+
             //Log.d(TAG, email.text.toString())
             //Log.d(TAG, password.text.toString())
 
             auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        Log.d(TAG, "createUserWithEmail:success")
+                        //Log.d(TAG, "createUserWithEmail:success")
 
                         val user = auth.currentUser
-                        Log.d(TAG, user?.uid.toString())
+                        uid = user?.uid.toString()
+                        //Log.d(TAG, user?.uid.toString())
 
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
+
+                        // Write a message to the database
+                        val database = Firebase.database
+                        val myRef = database.getReference("message")
+
+                        myRef.setValue("Hello, World!")
+
+                        /*val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)*/
 
                     } else {
                         // If sign in fails, display a message to the user.
