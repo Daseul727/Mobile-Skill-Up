@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.Toast
 import com.example.sogating.MainActivity
 import com.example.sogating.R
+import com.example.sogating.utils.FirebaseRef
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -57,14 +58,17 @@ class JoinActivity : AppCompatActivity() {
 
                         val user = auth.currentUser
                         uid = user?.uid.toString()
-                        //Log.d(TAG, user?.uid.toString())
+                        Log.d(TAG, user?.uid.toString())
 
+                        //1. 단순 message
+                        //FirebaseRef.userInfoRef.setValue("Hello, World!!!!!")
 
-                        // Write a message to the database
-                        val database = Firebase.database
-                        val myRef = database.getReference("message")
+                        //2. uid 하위에 message
+                        //FirebaseRef.userInfoRef.child(uid).setValue("Hello, World!!!!!")
 
-                        myRef.setValue("Hello, World!")
+                        //3. uid 하위에 data
+                        val userModel = UserDataModel(nickname,gender, city, age, uid)
+                        FirebaseRef.userInfoRef.child(uid).setValue(userModel)
 
                         /*val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)*/
