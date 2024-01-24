@@ -96,8 +96,8 @@ class JoinActivity : AppCompatActivity() {
                         //4. upload profile image to stoarage
                         uploadImage(uid)
 
-                        /*val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)*/
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
 
                     } else {
                         // If sign in fails, display a message to the user.

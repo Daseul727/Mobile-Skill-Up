@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import com.example.sogating.auth.IntroActivity
 import com.example.sogating.auth.UserDataModel
 import com.example.sogating.setting.MyPageActivity
@@ -28,7 +29,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var manager : CardStackLayoutManager
 
     private val TAG = "MainActivity !!! "
-    val userList = mutableListOf<UserDataModel>()
+    private var userList = mutableListOf<UserDataModel>()
+
+    private var userCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +59,23 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onCardSwiped(direction: Direction?) {
+
+                if (direction == Direction.Right) {
+                    //LENGTH_SHORT = 토스트 쳬류시간
+                    Toast.makeText(this@MainActivity, "오른쪽 입니다", Toast.LENGTH_SHORT).show()
+                }
+
+                if (direction == Direction.Left) {
+                    Toast.makeText(this@MainActivity, "왼쪽 입니다", Toast.LENGTH_SHORT).show()
+                }
+
+                userCount += 1
+
+                if (userCount == userList.count()) {
+                    Toast.makeText(this@MainActivity, "유저 새롭게 받아옵니다", Toast.LENGTH_SHORT).show()
+                    getUserDataList()
+                }
+
             }
 
             override fun onCardRewound() {
