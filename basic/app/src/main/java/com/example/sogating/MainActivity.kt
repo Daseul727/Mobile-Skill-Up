@@ -7,17 +7,14 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
-import com.example.sogating.auth.IntroActivity
 import com.example.sogating.auth.UserDataModel
-import com.example.sogating.setting.MyPageActivity
 import com.example.sogating.setting.SettingActivity
 import com.example.sogating.slider.CardStackAdapter
+import com.example.sogating.utils.FirebaseAuthUtils
 import com.example.sogating.utils.FirebaseRef
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.ktx.Firebase
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackListener
 import com.yuyakaido.android.cardstackview.CardStackView
@@ -33,14 +30,15 @@ class MainActivity : AppCompatActivity() {
 
     private var userCount = 0
 
+    private val uid = FirebaseAuthUtils.getUid()
+    private lateinit var currentUserGender : String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val setting = findViewById<ImageView>(R.id.settingIcon)
         setting.setOnClickListener{
-            /*val auth = Firebase.auth
-            auth.signOut()*/
 
             val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
@@ -73,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
                 if (userCount == userList.count()) {
                     Toast.makeText(this@MainActivity, "유저 새롭게 받아옵니다", Toast.LENGTH_SHORT).show()
-                    getUserDataList()
+                    getUserDataList(currentUserGender)
                 }
 
             }
@@ -97,10 +95,25 @@ class MainActivity : AppCompatActivity() {
         cardStackView.layoutManager = manager
         cardStackView.adapter = cardStackAdapter
 
-        getUserDataList()
+        //getUserDataList()
+        getMyUserData()
+    }
+    private fun getMyUserData() {
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                var data = dataSnapshot.getValue(UserDataModel::class.java)
+
+                currentUserGender = data?.gender.toString()
+                getUserDataList(currentUserGender)
+            }
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        FirebaseRef.userInfoRef.child(uid).addValueEventListener(postListener)
     }
 
-    private fun getUserDataList() {
+    private fun getUserDataList(currentUserGender : String) {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 //val post = dataSnapshot.getValue<Post>()
@@ -110,8 +123,11 @@ class MainActivity : AppCompatActivity() {
                     //Log.d(TAG, dataModel.toString())
 
                     val user = dataModel.getValue(UserDataModel::class.java)
-                    //Log.d(TAG, user?.nickname.toString())
-                    userList.add(user!!)
+
+                    if (user!!.gender.toString() != currentUserGender) {
+                        userList.add(user)
+                    }
+
                 }
 
                 //카드 어댑터 동기화
@@ -125,4 +141,5 @@ class MainActivity : AppCompatActivity() {
         }
         FirebaseRef.userInfoRef.addValueEventListener(postListener)
     }
+
 }
