@@ -9,5 +9,6 @@ class FirebaseRef {
         // Write a message to the database
         val database = Firebase.database
         val userInfoRef = database.getReference("userInfo")
+        val userLikeRef = database.getReference("userLike")
     }
 }

@@ -61,6 +61,9 @@ class MainActivity : AppCompatActivity() {
                 if (direction == Direction.Right) {
                     //LENGTH_SHORT = 토스트 쳬류시간
                     Toast.makeText(this@MainActivity, "오른쪽 입니다", Toast.LENGTH_SHORT).show()
+
+                    //Log.d(TAG, userList[userCount].uid.toString())
+                    userLikeOtherUser(uid, userList[userCount].uid.toString())
                 }
 
                 if (direction == Direction.Left) {
@@ -140,6 +143,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
         FirebaseRef.userInfoRef.addValueEventListener(postListener)
+    }
+
+    //유저의 좋아요를 표시하는 부분
+    //나의 uid, 좋아요한 사람의 uid 필요
+    private fun userLikeOtherUser(myUid : String, otherUid : String) {
+        FirebaseRef.userLikeRef.child(myUid).child(otherUid).setValue(true)
     }
 
 }
