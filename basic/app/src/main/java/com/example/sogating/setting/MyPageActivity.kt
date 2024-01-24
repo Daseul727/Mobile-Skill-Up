@@ -1,11 +1,14 @@
 package com.example.sogating.setting
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.example.sogating.MainActivity
 import com.example.sogating.R
 import com.example.sogating.auth.UserDataModel
 import com.example.sogating.utils.FirebaseAuthUtils
@@ -26,6 +29,12 @@ class MyPageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_my_page)
 
         getMyData()
+
+        val myMainBtn = findViewById<Button>(R.id.myMainBtn)
+        myMainBtn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
