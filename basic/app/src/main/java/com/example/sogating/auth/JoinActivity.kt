@@ -1,11 +1,15 @@
 package com.example.sogating.auth
 
 import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.sogating.MainActivity
 import com.example.sogating.R
 import com.example.sogating.utils.FirebaseRef
@@ -14,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import java.io.ByteArrayOutputStream
 
 class JoinActivity : AppCompatActivity() {
 
@@ -37,6 +42,21 @@ class JoinActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
+        //이미지 불러오기
+        val profileImage = findViewById<ImageView>(R.id.imageArea)
+
+        val getAction = registerForActivityResult(
+            ActivityResultContracts.GetContent(),
+            ActivityResultCallback { uri ->
+                profileImage.setImageURI(uri)
+            }
+        )
+
+        profileImage.setOnClickListener {
+            getAction.launch("image/*")
+        }
+
+        //가입하기
         val joinBtn = findViewById<Button>(R.id.joinSubmit)
         joinBtn.setOnClickListener {
 
