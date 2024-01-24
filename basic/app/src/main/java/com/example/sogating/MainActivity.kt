@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.ImageView
 import com.example.sogating.auth.IntroActivity
 import com.example.sogating.auth.UserDataModel
+import com.example.sogating.setting.MyPageActivity
+import com.example.sogating.setting.SettingActivity
 import com.example.sogating.slider.CardStackAdapter
 import com.example.sogating.utils.FirebaseRef
 import com.google.firebase.auth.ktx.auth
@@ -34,10 +36,10 @@ class MainActivity : AppCompatActivity() {
 
         val setting = findViewById<ImageView>(R.id.settingIcon)
         setting.setOnClickListener{
-            val auth = Firebase.auth
-            auth.signOut()
+            /*val auth = Firebase.auth
+            auth.signOut()*/
 
-            val intent = Intent(this, IntroActivity::class.java)
+            val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
         }
 
