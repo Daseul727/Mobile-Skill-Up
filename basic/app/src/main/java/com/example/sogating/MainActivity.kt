@@ -1,12 +1,19 @@
 package com.example.sogating
 
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.example.sogating.auth.UserDataModel
 import com.example.sogating.setting.SettingActivity
 import com.example.sogating.slider.CardStackAdapter
@@ -75,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                 userCount += 1
 
                 if (userCount == userList.count()) {
-                    Toast.makeText(this@MainActivity, "유저 새롭게 받아옵니다", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this@MainActivity, "유저 새롭게 받아옵니다", Toast.LENGTH_SHORT).show()
                     getUserDataList(currentUserGender)
                 }
 
@@ -176,7 +183,9 @@ class MainActivity : AppCompatActivity() {
                 for (dataModel in dataSnapshot.children) {
                     val likeUserKey = dataModel.key.toString()
                     if (likeUserKey.equals(uid)) {
-                        Toast.makeText(this@MainActivity, "매칭완료", Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(this@MainActivity, "매칭완료", Toast.LENGTH_SHORT).show()
+                        createNotificationChannel()
+                        sendNotification()
                     }
                 }
             }
@@ -188,6 +197,40 @@ class MainActivity : AppCompatActivity() {
 
         FirebaseRef.userLikeRef.child(otherUid).addValueEventListener(postListener)
 
+    }
+
+    /**
+     * Notification 사용을 위한 init
+     */
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "name"
+            val descriptionText = "dessss"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel("test_channel", name, importance).apply {
+                description = descriptionText
+            }
+            // Register the channel with the system
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
+    /**
+     * Notification 사용
+     */
+    private fun sendNotification() {
+        val builder = NotificationCompat.Builder(this, "test_channel")
+            .setSmallIcon(R.drawable.ic_launcher_background)
+            .setContentTitle("매칭완료")
+            .setContentText("저사람도 나를 좋아해요♥")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        with(NotificationManagerCompat.from(this)) {
+            //permission 관련 warning
+            notify(123,builder.build())
+        }
     }
 
 }
