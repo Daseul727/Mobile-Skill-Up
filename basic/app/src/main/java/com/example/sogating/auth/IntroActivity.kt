@@ -16,6 +16,7 @@ class IntroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
 
+        //아래 방법은 앱에서 코드로 알림을 보냈지만, fireBase 콘솔에서 모든 앱에 push 보내기 기능도 있음
         val isTiramisuOrHigher = Build.VERSION.SDK_INT>= Build.VERSION_CODES.TIRAMISU
         val notificationPermission = Manifest.permission.POST_NOTIFICATIONS
 

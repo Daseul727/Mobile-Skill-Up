@@ -15,6 +15,9 @@ class SettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
+
+
+        //마이페이지 이동
         val mypageBtn = findViewById<Button>(R.id.myPageBtn)
 
         mypageBtn.setOnClickListener {
@@ -22,6 +25,7 @@ class SettingActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //로그아웃
         val logoutBtn = findViewById<Button>(R.id.logoutBtn)
         logoutBtn.setOnClickListener{
 
@@ -32,6 +36,7 @@ class SettingActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //내 좋아요 목록
         val myLikeListBtn = findViewById<Button>(R.id.myLikeListBtn)
         myLikeListBtn.setOnClickListener {
             val intent = Intent(this, MyLikeListActivity::class.java)
