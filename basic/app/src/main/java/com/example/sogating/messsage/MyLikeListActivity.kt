@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ListView
+import android.widget.Toast
 import com.example.sogating.R
 import com.example.sogating.auth.UserDataModel
 import com.example.sogating.utils.FirebaseAuthUtils
@@ -36,8 +37,12 @@ class MyLikeListActivity : AppCompatActivity() {
         //내가 좋아요 한 사람들
         getMyLikeList()
 
-        //전체 user data 받아오기
-        getUserDataList()
+
+        //좋아요 목록 클릭 이벤트
+        myLikeListView.setOnItemClickListener { parent, view, position, id ->
+            //Log.d(TAG, likeUserList[position].uid.toString())
+            checkMatching(likeUserList[position].uid.toString())
+        }
 
     }
 
@@ -87,5 +92,31 @@ class MyLikeListActivity : AppCompatActivity() {
             }
         }
         FirebaseRef.userInfoRef.addValueEventListener(postListener)
+    }
+
+    private fun checkMatching (otherUid : String) {
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                if (dataSnapshot.children.count() == 0) {
+                    Toast.makeText(this@MyLikeListActivity, "매칭이 되지않았습니다", Toast.LENGTH_SHORT).show()
+                } else {
+                    //내가 좋아요 한 사람의 좋아요 리스트 = dataSnapshot 에서 나를 찾음
+                    for (dataModel in dataSnapshot.children) {
+                        val likeUserKey = dataModel.key.toString()
+                        if (likeUserKey.equals(uid)) {
+                            Toast.makeText(this@MyLikeListActivity, "매칭이 되었습니다", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+
+        FirebaseRef.userLikeRef.child(otherUid).addValueEventListener(postListener)
     }
 }
