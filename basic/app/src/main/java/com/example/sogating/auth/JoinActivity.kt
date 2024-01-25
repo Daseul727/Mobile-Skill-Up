@@ -14,11 +14,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.example.sogating.MainActivity
 import com.example.sogating.R
 import com.example.sogating.utils.FirebaseRef
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.ktx.storage
 import java.io.ByteArrayOutputStream
 
@@ -81,20 +83,36 @@ class JoinActivity : AppCompatActivity() {
 
                         val user = auth.currentUser
                         uid = user?.uid.toString()
-                        Log.d(TAG, user?.uid.toString())
+                        //Log.d(TAG, user?.uid.toString())
 
-                        //1. 단순 message
-                        //FirebaseRef.userInfoRef.setValue("Hello, World!!!!!")
+                        //토큰 받아옴
+                        FirebaseMessaging.getInstance().token.addOnCompleteListener(
+                            OnCompleteListener { task ->
+                            if (!task.isSuccessful) {
+                                //Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                                return@OnCompleteListener
+                            }
 
-                        //2. uid 하위에 message
-                        //FirebaseRef.userInfoRef.child(uid).setValue("Hello, World!!!!!")
+                            // Get new FCM registration token
+                            val token = task.result
 
-                        //3. uid 하위에 data
-                        val userModel = UserDataModel(nickname,gender, city, age, uid)
-                        FirebaseRef.userInfoRef.child(uid).setValue(userModel)
+                            //Log.e(TAG, token.toString())
 
-                        //4. upload profile image to stoarage
-                        uploadImage(uid)
+                            //1. 단순 message 저장
+                            //FirebaseRef.userInfoRef.setValue("Hello, World!!!!!")
+
+                            //2. uid 하위에 message 저장
+                            //FirebaseRef.userInfoRef.child(uid).setValue("Hello, World!!!!!")
+
+                            //3. uid 하위에 data 다발 저장
+                            val userModel = UserDataModel(nickname,gender, city, age, uid, token)
+                            FirebaseRef.userInfoRef.child(uid).setValue(userModel)
+
+                            //4. upload profile image to stoarage
+                            uploadImage(uid)
+
+                        })
+
 
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
