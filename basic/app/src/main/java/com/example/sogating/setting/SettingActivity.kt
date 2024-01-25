@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.sogating.R
 import com.example.sogating.auth.IntroActivity
+import com.example.sogating.messsage.MyLikeListActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -28,6 +29,12 @@ class SettingActivity : AppCompatActivity() {
             auth.signOut()
 
             val intent = Intent(this, IntroActivity::class.java)
+            startActivity(intent)
+        }
+
+        val myLikeListBtn = findViewById<Button>(R.id.myLikeListBtn)
+        myLikeListBtn.setOnClickListener {
+            val intent = Intent(this, MyLikeListActivity::class.java)
             startActivity(intent)
         }
     }

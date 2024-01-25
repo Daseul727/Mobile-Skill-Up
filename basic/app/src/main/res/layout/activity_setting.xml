@@ -17,11 +17,20 @@
         android:layout_height="wrap_content"/>
 
     <Button
+        android:id="@+id/myLikeListBtn"
+        android:layout_margin="20dp"
+        android:width="100dp"
+        android:text="MY LIKE LIST"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
         android:id="@+id/logoutBtn"
         android:layout_margin="20dp"
         android:width="100dp"
         android:text="LOGOUT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
 
 </LinearLayout>
