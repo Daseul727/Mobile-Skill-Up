@@ -30,6 +30,8 @@ class JoinActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
+    private var email = ""
+    private var password = ""
     private var nickname = ""
     private var gender = ""
     private var city = ""
@@ -65,9 +67,11 @@ class JoinActivity : AppCompatActivity() {
         val joinBtn = findViewById<Button>(R.id.joinSubmit)
         joinBtn.setOnClickListener {
 
-            val email = findViewById<TextInputEditText>(R.id.emailArea)
-            val password = findViewById<TextInputEditText>(R.id.passwordArea)
+            val emailArea = findViewById<TextInputEditText>(R.id.emailArea)
+            val passwordArea = findViewById<TextInputEditText>(R.id.passwordArea)
 
+            email = emailArea.text.toString()
+            password = passwordArea.text.toString()
             nickname = findViewById<TextInputEditText>(R.id.nicknameArea).text.toString()
             gender = findViewById<TextInputEditText>(R.id.genderArea).text.toString()
             city = findViewById<TextInputEditText>(R.id.cityArea).text.toString()
@@ -76,7 +80,7 @@ class JoinActivity : AppCompatActivity() {
             //Log.d(TAG, email.text.toString())
             //Log.d(TAG, password.text.toString())
 
-            auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
+            auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         //Log.d(TAG, "createUserWithEmail:success")
@@ -105,7 +109,7 @@ class JoinActivity : AppCompatActivity() {
                             //FirebaseRef.userInfoRef.child(uid).setValue("Hello, World!!!!!")
 
                             //3. uid 하위에 data 다발 저장
-                            val userModel = UserDataModel(nickname,gender, city, age, uid, token)
+                            val userModel = UserDataModel(email, nickname,gender, city, age, uid, token)
                             FirebaseRef.userInfoRef.child(uid).setValue(userModel)
 
                             //4. upload profile image to stoarage
