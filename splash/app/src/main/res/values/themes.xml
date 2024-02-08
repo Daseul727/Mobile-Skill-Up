@@ -6,4 +6,17 @@
     </style>
 
     <style name="Theme.Basic2" parent="Base.Theme.Basic2" />
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.Bridge">
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.Splash">
+        <item name="android:windowBackground">@drawable/food</item>
+    </style>
+
 </resources>
