@@ -14,3 +14,4 @@
 - lifecycle viewmodel
 - coil (image load)
 
+![basic_7](https://github.com/Daseul727/Mobile-Skill-Up/assets/44765748/b80746f7-6a4b-43a7-ab44-01ef6c58d7d9)
