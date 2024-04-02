@@ -1,11 +1,11 @@
-package com.example.network_sample.model
+package com.example.showdog.model
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.network_sample.data.Repository
-import com.example.network_sample.utils.NetworkResult
+import com.example.showdog.data.Repository
+import com.example.showdog.utils.NetworkResult
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

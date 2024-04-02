@@ -1,7 +1,7 @@
-package com.example.network_sample.data.remote
+package com.example.showdog.data.remote
 
-import com.example.network_sample.model.DogResponse
-import com.example.network_sample.utils.Constants
+import com.example.showdog.model.DogResponse
+import com.example.showdog.utils.Constants
 import retrofit2.Response
 import retrofit2.http.GET
 

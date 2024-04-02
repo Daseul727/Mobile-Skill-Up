@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.network_sample'
+    namespace 'com.example.showdog'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.network_sample"
+        applicationId "com.example.showdog"
         minSdk 24
         targetSdk 34
         versionCode 1

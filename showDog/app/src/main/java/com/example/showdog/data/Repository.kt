@@ -1,9 +1,9 @@
-package com.example.network_sample.data
+package com.example.showdog.data
 
-import com.example.network_sample.data.remote.RemoteDataSource
-import com.example.network_sample.model.BaseApiResponse
-import com.example.network_sample.model.DogResponse
-import com.example.network_sample.utils.NetworkResult
+import com.example.showdog.data.remote.RemoteDataSource
+import com.example.showdog.model.BaseApiResponse
+import com.example.showdog.model.DogResponse
+import com.example.showdog.utils.NetworkResult
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

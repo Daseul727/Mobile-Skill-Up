@@ -1,7 +1,7 @@
-package com.example.network_sample.di
+package com.example.showdog.di
 
-import com.example.network_sample.data.remote.APIService
-import com.example.network_sample.utils.Constants.Companion.BASE_URL
+import com.example.showdog.data.remote.APIService
+import com.example.showdog.utils.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

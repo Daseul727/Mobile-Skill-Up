@@ -1,4 +1,4 @@
-package com.example.network_sample.data.remote
+package com.example.showdog.data.remote
 
 import javax.inject.Inject
 

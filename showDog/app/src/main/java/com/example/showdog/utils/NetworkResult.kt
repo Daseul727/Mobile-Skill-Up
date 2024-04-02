@@ -1,4 +1,4 @@
-package com.example.network_sample.utils
+package com.example.showdog.utils
 
 sealed class NetworkResult<T>(
     val data: T? = null,

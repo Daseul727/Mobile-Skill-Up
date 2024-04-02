@@ -1,6 +1,6 @@
-package com.example.network_sample.model
+package com.example.showdog.model
 
-import com.example.network_sample.utils.NetworkResult
+import com.example.showdog.utils.NetworkResult
 import retrofit2.Response
 
 abstract class BaseApiResponse {

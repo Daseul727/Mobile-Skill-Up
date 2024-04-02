@@ -1,4 +1,4 @@
-package com.example.network_sample.model
+package com.example.showdog.model
 
 import com.google.gson.annotations.SerializedName
 
