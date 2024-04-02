@@ -4,10 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="isDebug"
+            type="Boolean" />
+
+        <variable
+            name="item"
+            type="com.example.showdog.model.DogResponse" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
+
+        <TextView
+            android:text="@{item.status}"
+            android:textSize="20dp"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            tools:text="ttl"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            tools:ignore="MissingConstraints" />
 
         <ImageView
             android:id="@+id/imgDog"
