@@ -6,9 +6,9 @@ import android.view.View
 import android.widget.Toast
 import coil.load
 import coil.transform.RoundedCornersTransformation
-import com.example.showdog.databinding.ActivityMainBinding
-import com.example.showdog.model.MainViewModel
-import com.example.showdog.utils.NetworkResult
+import com.example.network_sample.databinding.ActivityMainBinding
+import com.example.network_sample.model.MainViewModel
+import com.example.network_sample.utils.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -25,16 +25,11 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(_binding.root)
 
-        initView()
         fetchData()
 
         _binding.imgRefresh.setOnClickListener {
             fetchResponse()
         }
-    }
-
-    private fun initView() {
-       _binding.isDebug = true
     }
 
     private fun fetchData() {
@@ -44,7 +39,6 @@ class MainActivity : AppCompatActivity() {
             when (res) {
                 is NetworkResult.Success -> {
                     res.data?.let {
-                        _binding.item = res.data
                         _binding.imgDog.load(
                             res.data.message
                         ) {
