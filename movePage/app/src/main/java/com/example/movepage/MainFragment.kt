@@ -30,12 +30,23 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            btnMoveSecond.setOnClickListener {
 
+            incTitlebar.btnBack.visibility = View.GONE
+            incTitlebar.txtTitle.text = "MAIN"
+
+            btnMoveSecond.setOnClickListener {
+                val paramData = if(etMessage.text.isNotEmpty()) etMessage.text.toString() else "empty msg"
+                val bundle = Bundle()
+                bundle.putString("param", paramData)
+                val act = activity as MainActivity
+                act.openFragment(SecondFragment.newInstance().apply {
+                    arguments = bundle
+                }, "2")
             }
 
             btnMoveThird.setOnClickListener {
-
+                val act = activity as MainActivity
+                act.openFragment(ThirdFragment() , "3")
             }
         }
     }
