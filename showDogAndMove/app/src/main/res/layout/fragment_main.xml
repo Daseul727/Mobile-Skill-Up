@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="isDebug"
+            type="Boolean" />
+
+        <variable
+            name="item"
+            type="com.example.showdogandmove.model.DogResponse" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <include
+            android:id="@+id/inc_titlebar"
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            layout="@layout/inc_title_bar" />
+
+        <ImageView
+            android:id="@+id/imgDog"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:contentDescription="@string/dog_image"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="100dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"/>
+
+        <ProgressBar
+            android:id="@+id/pbDog"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/imgRefresh"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_refresh"
+            android:contentDescription="@string/refresh"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgDog"/>
+
+        <EditText
+            android:id="@+id/et_message"
+            android:layout_width="144dp"
+            android:layout_height="35dp"
+            android:background="#ffdddd"
+            app:layout_constraintBottom_toTopOf="@id/btn_move_second"
+            app:layout_constraintEnd_toEndOf="@id/btn_move_second"
+            app:layout_constraintStart_toStartOf="@id/btn_move_second" />
+
+        <Button
+            android:id="@+id/btn_move_second"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="go second"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_move_third"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="go Third"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_move_second" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

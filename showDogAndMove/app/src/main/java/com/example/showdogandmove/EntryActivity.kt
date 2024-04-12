@@ -7,8 +7,10 @@ import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.showdogandmove.databinding.ActivityEntryBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class EntryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEntryBinding
