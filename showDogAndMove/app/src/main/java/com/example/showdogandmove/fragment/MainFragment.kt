@@ -14,13 +14,19 @@ import com.example.showdogandmove.R
 import com.example.showdogandmove.databinding.FragmentMainBinding
 import com.example.showdogandmove.model.MainViewModel
 import com.example.showdogandmove.utils.NetworkResult
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     @Inject
     lateinit var mainViewModel: MainViewModel
-    
+    /*lateinit var viewmodelFactory: ViewModelProvider.Factory
+    private val mainViewModel: MainViewModel by viewModels {
+        viewmodelFactory
+    }*/
+
     private var _binding: FragmentMainBinding? = null
     private val binding: FragmentMainBinding
         get() = _binding!!
@@ -33,6 +39,7 @@ class MainFragment : Fragment() {
             return fragment
         }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,

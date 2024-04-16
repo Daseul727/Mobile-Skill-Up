@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment
 import com.example.showdogandmove.MainActivity
 import com.example.showdogandmove.R
 import com.example.showdogandmove.databinding.FragmentSecondBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SecondFragment : Fragment() {
 
     private var _binding : FragmentSecondBinding? = null

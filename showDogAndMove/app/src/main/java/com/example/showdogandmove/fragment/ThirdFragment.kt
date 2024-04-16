@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import com.example.showdogandmove.MainActivity
 import com.example.showdogandmove.R
 import com.example.showdogandmove.databinding.FragmentThirdBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ThirdFragment : Fragment() {
     private var _binding : FragmentThirdBinding? = null
     private val binding : FragmentThirdBinding
