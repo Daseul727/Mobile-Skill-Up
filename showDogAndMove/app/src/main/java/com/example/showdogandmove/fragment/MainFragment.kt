@@ -19,11 +19,20 @@ import javax.inject.Inject
 class MainFragment : Fragment() {
 
     @Inject
-    lateinit var mainViewModel: MainViewModel //이걸 여기서? main activity 에서?
+    lateinit var mainViewModel: MainViewModel
     
     private var _binding: FragmentMainBinding? = null
     private val binding: FragmentMainBinding
         get() = _binding!!
+
+    companion object {
+        fun newInstance() : MainFragment {
+            val fragment = MainFragment()
+            val args = Bundle()
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

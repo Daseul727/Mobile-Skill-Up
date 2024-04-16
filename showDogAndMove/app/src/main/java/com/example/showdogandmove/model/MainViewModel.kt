@@ -9,7 +9,9 @@ import com.example.showdogandmove.utils.NetworkResult
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
+class MainViewModel @Inject constructor(
+    private val repository: Repository
+) : ViewModel() {
 
     private val _response : MutableLiveData<NetworkResult<DogResponse>> = MutableLiveData()
     val response : LiveData<NetworkResult<DogResponse>> = _response
