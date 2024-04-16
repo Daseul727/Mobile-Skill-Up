@@ -36,7 +36,7 @@ Fragment 이동 및 Navigation 설정
 ![basic_11](https://github.com/Daseul727/Mobile-Skill-Up/assets/44765748/64892c82-13c7-4abf-9f6c-f9ef68ad4344)
 
 
-## 2. Show dog and move Project
+## 3. Show dog and move Project
 Fragment 에서 viewModel 및 API 사용
 show Dog project + move page project
 
