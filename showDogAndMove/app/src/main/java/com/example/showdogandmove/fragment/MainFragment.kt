@@ -76,6 +76,11 @@ class MainFragment : Fragment() {
                 val act = activity as MainActivity
                 act.openFragment(ThirdFragment() , "3")
             }
+
+            incTitlebar.btnMypage.setOnClickListener {
+                val act = activity as MainActivity
+                act.openFragment(MyPageFragment() , "MY")
+            }
         }
     }
 

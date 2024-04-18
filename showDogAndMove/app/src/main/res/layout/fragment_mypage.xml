@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="isDebug"
+            type="Boolean" />
+
+        <variable
+            name="item"
+            type="com.example.showdogandmove.model.DogResponse" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <include
+            android:id="@+id/inc_titlebar"
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            layout="@layout/inc_title_bar" />
+
+        <TextView
+            android:text="님 안녕하세요!"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/screen_top_margin"
+            android:layout_marginStart="@dimen/screen_start_margin"
+            android:layout_marginEnd="@dimen/screen_end_margin"
+            tools:ignore="MissingConstraints" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
