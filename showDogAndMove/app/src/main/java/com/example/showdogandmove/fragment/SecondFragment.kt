@@ -56,6 +56,7 @@ class SecondFragment : Fragment() {
             tvMessage.text = strParam
 
             incTitlebar.txtTitle.text = "Second"
+            incTitlebar.btnBack.visibility = View.VISIBLE
             incTitlebar.btnBack.setOnClickListener {
                 val act = activity as MainActivity
                 act.navigateUp("2")

@@ -41,6 +41,7 @@ class ThirdFragment : Fragment() {
             }
 
             incTitlebar2.txtTitle.text = "Third"
+            incTitlebar2.btnBack.visibility = View.VISIBLE
         }
     }
 }

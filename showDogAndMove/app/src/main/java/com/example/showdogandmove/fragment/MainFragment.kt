@@ -22,10 +22,6 @@ class MainFragment : Fragment() {
 
     @Inject
     lateinit var mainViewModel: MainViewModel
-    /*lateinit var viewmodelFactory: ViewModelProvider.Factory
-    private val mainViewModel: MainViewModel by viewModels {
-        viewmodelFactory
-    }*/
 
     private var _binding: FragmentMainBinding? = null
     private val binding: FragmentMainBinding
@@ -56,7 +52,6 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            incTitlebar.btnBack.visibility = View.GONE
             incTitlebar.txtTitle.text = "MAIN"
 
             //이미지 새로고침
