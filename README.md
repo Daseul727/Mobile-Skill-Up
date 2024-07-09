@@ -55,3 +55,10 @@ show Dog project + move page project
 - supportFragmentManager
 
 
+## 4. Samsung Health API Project
+Fragment 에서 Samsung Health Api 연결
+
+#### :loudspeaker: Cehck Points
+- Connect Samsun Health API
+- add App icon
+- control status bar
