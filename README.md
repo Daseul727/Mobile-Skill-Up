@@ -62,3 +62,7 @@ Fragment 에서 Samsung Health Api 연결
 - Connect Samsun Health API
 - add App icon
 - control status bar
+
+#### :wrench: Stacks
+- Show custom Toast
+- Samsun Health API
