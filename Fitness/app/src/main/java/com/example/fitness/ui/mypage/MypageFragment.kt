@@ -1,4 +1,4 @@
-package com.example.hantawalk.ui.mypage
+package com.example.fitness.ui.mypage
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

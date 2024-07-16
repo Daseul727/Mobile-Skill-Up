@@ -1,4 +1,4 @@
-package com.example.hantawalk.ui.main
+package com.example.fitness.ui.main
 
 import android.content.Intent
 import android.net.Uri
