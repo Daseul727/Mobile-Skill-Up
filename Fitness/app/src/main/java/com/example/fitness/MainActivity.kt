@@ -8,7 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.fitness.databinding.ActivityMainBinding
-import com.example.fitness.ui.main.MainFragment
+import com.example.hantawalk.ui.main.MainFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
