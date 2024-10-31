@@ -42,6 +42,8 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
+        dataBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -78,4 +80,9 @@ dependencies {
     /*Hilt*/
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
+
+    implementation ("androidx.appcompat:appcompat:1.6.1") // AppCompatActivity 의존성
+    implementation ("androidx.activity:activity-compose:1.6.1") // Compose 관련
+    implementation(kotlin("script-runtime"))
+
 }
